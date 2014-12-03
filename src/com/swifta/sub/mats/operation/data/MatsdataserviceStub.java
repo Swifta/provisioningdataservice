@@ -8132,14 +8132,14 @@
                         */
 
                         
-                                    protected java.lang.String localAmount ;
+                                    protected double localAmount ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return double
                            */
-                           public  java.lang.String getAmount(){
+                           public  double getAmount(){
                                return localAmount;
                            }
 
@@ -8149,7 +8149,7 @@
                                * Auto generated setter method
                                * @param param Amount
                                */
-                               public void setAmount(java.lang.String param){
+                               public void setAmount(double param){
                             
                                             this.localAmount=param;
                                     
@@ -8272,36 +8272,6 @@
                                public void setTomessage(java.lang.String param){
                             
                                             this.localTomessage=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for Iexternaltransactionid
-                        */
-
-                        
-                                    protected int localIexternaltransactionid ;
-                                
-
-                           /**
-                           * Auto generated getter method
-                           * @return int
-                           */
-                           public  int getIexternaltransactionid(){
-                               return localIexternaltransactionid;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param Iexternaltransactionid
-                               */
-                               public void setIexternaltransactionid(int param){
-                            
-                                            this.localIexternaltransactionid=param;
                                     
 
                                }
@@ -8513,18 +8483,13 @@
                                     namespace = "http://swifta.com/sub/mats/operation/data";
                                     writeStartElement(null, namespace, "amount", xmlWriter);
                              
-
-                                          if (localAmount==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localAmount);
-                                            
-                                          }
+                                               if (java.lang.Double.isNaN(localAmount)) {
+                                           
+                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
+                                               }
                                     
                                    xmlWriter.writeEndElement();
                              
@@ -8587,19 +8552,6 @@
                                                    xmlWriter.writeCharacters(localTomessage);
                                             
                                           }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
-                                    namespace = "http://swifta.com/sub/mats/operation/data";
-                                    writeStartElement(null, namespace, "iexternaltransactionid", xmlWriter);
-                             
-                                               if (localIexternaltransactionid==java.lang.Integer.MIN_VALUE) {
-                                           
-                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                      
-                                               } else {
-                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIexternaltransactionid));
-                                               }
                                     
                                    xmlWriter.writeEndElement();
                              
@@ -8853,9 +8805,9 @@
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "amount"));
                                  
-                                         elementList.add(localAmount==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
-                                    
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
+                            
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "transactionid"));
                                  
@@ -8880,12 +8832,6 @@
                                          elementList.add(localTomessage==null?null:
                                          org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTomessage));
                                     
-                                      elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
-                                                                      "iexternaltransactionid"));
-                                 
-                                elementList.add(
-                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localIexternaltransactionid));
-                            
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "transactionstatusid"));
                                  
@@ -9078,11 +9024,13 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setAmount(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToDouble(content));
                                             
                                        } else {
                                            
                                            
+                                                   object.setAmount(java.lang.Double.NaN);
+                                               
                                            reader.getElementText(); // throw away text nodes if any.
                                        }
                                       
@@ -9203,37 +9151,6 @@
                                        } else {
                                            
                                            
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-                                }
-                            
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data","iexternaltransactionid").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setIexternaltransactionid(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                                   object.setIexternaltransactionid(java.lang.Integer.MIN_VALUE);
-                                               
                                            reader.getElementText(); // throw away text nodes if any.
                                        }
                                       
@@ -30112,14 +30029,14 @@
                         */
 
                         
-                                    protected java.lang.String localAmount ;
+                                    protected double localAmount ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return double
                            */
-                           public  java.lang.String getAmount(){
+                           public  double getAmount(){
                                return localAmount;
                            }
 
@@ -30129,7 +30046,7 @@
                                * Auto generated setter method
                                * @param param Amount
                                */
-                               public void setAmount(java.lang.String param){
+                               public void setAmount(double param){
                             
                                             this.localAmount=param;
                                     
@@ -30142,14 +30059,14 @@
                         */
 
                         
-                                    protected java.lang.String localTransactionid ;
+                                    protected int localTransactionid ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return int
                            */
-                           public  java.lang.String getTransactionid(){
+                           public  int getTransactionid(){
                                return localTransactionid;
                            }
 
@@ -30159,9 +30076,69 @@
                                * Auto generated setter method
                                * @param param Transactionid
                                */
-                               public void setTransactionid(java.lang.String param){
+                               public void setTransactionid(int param){
                             
                                             this.localTransactionid=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Externaltransactionid
+                        */
+
+                        
+                                    protected java.lang.String localExternaltransactionid ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getExternaltransactionid(){
+                               return localExternaltransactionid;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Externaltransactionid
+                               */
+                               public void setExternaltransactionid(java.lang.String param){
+                            
+                                            this.localExternaltransactionid=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Externalstatuscode
+                        */
+
+                        
+                                    protected java.lang.String localExternalstatuscode ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getExternalstatuscode(){
+                               return localExternalstatuscode;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Externalstatuscode
+                               */
+                               public void setExternalstatuscode(java.lang.String param){
+                            
+                                            this.localExternalstatuscode=param;
                                     
 
                                }
@@ -30172,14 +30149,14 @@
                         */
 
                         
-                                    protected java.lang.String localTransactionchannelid ;
+                                    protected int localTransactionchannelid ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return int
                            */
-                           public  java.lang.String getTransactionchannelid(){
+                           public  int getTransactionchannelid(){
                                return localTransactionchannelid;
                            }
 
@@ -30189,9 +30166,39 @@
                                * Auto generated setter method
                                * @param param Transactionchannelid
                                */
-                               public void setTransactionchannelid(java.lang.String param){
+                               public void setTransactionchannelid(int param){
                             
                                             this.localTransactionchannelid=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Transactionstatusid
+                        */
+
+                        
+                                    protected int localTransactionstatusid ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return int
+                           */
+                           public  int getTransactionstatusid(){
+                               return localTransactionstatusid;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Transactionstatusid
+                               */
+                               public void setTransactionstatusid(int param){
+                            
+                                            this.localTransactionstatusid=param;
                                     
 
                                }
@@ -30373,26 +30380,34 @@
                                     namespace = "http://swifta.com/sub/mats/operation/data";
                                     writeStartElement(null, namespace, "amount", xmlWriter);
                              
-
-                                          if (localAmount==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localAmount);
-                                            
-                                          }
+                                               if (java.lang.Double.isNaN(localAmount)) {
+                                           
+                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
+                                               }
                                     
                                    xmlWriter.writeEndElement();
                              
                                     namespace = "http://swifta.com/sub/mats/operation/data";
                                     writeStartElement(null, namespace, "transactionid", xmlWriter);
                              
+                                               if (localTransactionid==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionid));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "http://swifta.com/sub/mats/operation/data";
+                                    writeStartElement(null, namespace, "externaltransactionid", xmlWriter);
+                             
 
-                                          if (localTransactionid==null){
+                                          if (localExternaltransactionid==null){
                                               // write the nil attribute
                                               
                                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -30400,7 +30415,25 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(localTransactionid);
+                                                   xmlWriter.writeCharacters(localExternaltransactionid);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "http://swifta.com/sub/mats/operation/data";
+                                    writeStartElement(null, namespace, "externalstatuscode", xmlWriter);
+                             
+
+                                          if (localExternalstatuscode==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localExternalstatuscode);
                                             
                                           }
                                     
@@ -30409,18 +30442,26 @@
                                     namespace = "http://swifta.com/sub/mats/operation/data";
                                     writeStartElement(null, namespace, "transactionchannelid", xmlWriter);
                              
-
-                                          if (localTransactionchannelid==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localTransactionchannelid);
-                                            
-                                          }
+                                               if (localTransactionchannelid==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionchannelid));
+                                               }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "http://swifta.com/sub/mats/operation/data";
+                                    writeStartElement(null, namespace, "transactionstatusid", xmlWriter);
+                             
+                                               if (localTransactionstatusid==java.lang.Integer.MIN_VALUE) {
+                                           
+                                                         writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                      
+                                               } else {
+                                                    xmlWriter.writeCharacters(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionstatusid));
+                                               }
                                     
                                    xmlWriter.writeEndElement();
                              
@@ -30661,21 +30702,39 @@
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "amount"));
                                  
-                                         elementList.add(localAmount==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
-                                    
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localAmount));
+                            
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "transactionid"));
                                  
-                                         elementList.add(localTransactionid==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionid));
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionid));
+                            
+                                      elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
+                                                                      "externaltransactionid"));
+                                 
+                                         elementList.add(localExternaltransactionid==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localExternaltransactionid));
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
+                                                                      "externalstatuscode"));
+                                 
+                                         elementList.add(localExternalstatuscode==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localExternalstatuscode));
                                     
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "transactionchannelid"));
                                  
-                                         elementList.add(localTransactionchannelid==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionchannelid));
-                                    
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionchannelid));
+                            
+                                      elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
+                                                                      "transactionstatusid"));
+                                 
+                                elementList.add(
+                                   org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localTransactionstatusid));
+                            
                                       elementList.add(new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data",
                                                                       "sendingmsisdn"));
                                  
@@ -30862,11 +30921,13 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setAmount(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToDouble(content));
                                             
                                        } else {
                                            
                                            
+                                                   object.setAmount(java.lang.Double.NaN);
+                                               
                                            reader.getElementText(); // throw away text nodes if any.
                                        }
                                       
@@ -30891,6 +30952,66 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setTransactionid(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                                   object.setTransactionid(java.lang.Integer.MIN_VALUE);
+                                               
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data","externaltransactionid").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setExternaltransactionid(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data","externalstatuscode").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setExternalstatuscode(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {
@@ -30920,11 +31041,44 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setTransactionchannelid(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
                                             
                                        } else {
                                            
                                            
+                                                   object.setTransactionchannelid(java.lang.Integer.MIN_VALUE);
+                                               
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://swifta.com/sub/mats/operation/data","transactionstatusid").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setTransactionstatusid(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToInt(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                                   object.setTransactionstatusid(java.lang.Integer.MIN_VALUE);
+                                               
                                            reader.getElementText(); // throw away text nodes if any.
                                        }
                                       

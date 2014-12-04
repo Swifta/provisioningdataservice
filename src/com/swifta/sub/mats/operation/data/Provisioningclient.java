@@ -397,7 +397,6 @@ public class Provisioningclient {
 
 						for (int j = 0; j < serviceFeeModel
 								.getServicecommissions().size(); j++) {
-
 							setupservicecommissionrequest
 									.setServicefeepropertiesid(new Integer(
 											setupservicefeeresponse

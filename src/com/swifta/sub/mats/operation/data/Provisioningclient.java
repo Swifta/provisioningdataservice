@@ -30,13 +30,13 @@ import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setupservicefeereq
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setupservicefeeresponse;
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setupservicefeeresponses;
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.SetupservicefeeresponsesE;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceCommission;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceFeeModel;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceFees;
 import com.swifta.sub.mats.serviceinterface.ActivationdataModel;
 import com.swifta.sub.mats.serviceinterface.DataResponse;
 import com.swifta.sub.mats.serviceinterface.LinkaccountModel;
 import com.swifta.sub.mats.serviceinterface.RegistrationdataModel;
-import com.swifta.sub.mats.serviceinterface.ServiceCommission;
-import com.swifta.sub.mats.serviceinterface.ServiceFeeModel;
-import com.swifta.sub.mats.serviceinterface.ServiceFees;
 import com.swifta.sub.mats.serviceinterface.SetdefaultaccountModel;
 import com.swifta.sub.mats.serviceinterface.SetparentModel;
 
@@ -51,7 +51,7 @@ public class Provisioningclient {
 		if (isWindows()) {
 			System.out.println("This is Windows");
 		} else if (isMac()) {
-			endpoint = "localhost";
+			endpoint = "54.173.157.210";
 		} else if (isUnix()) {
 			endpoint = "localhost";
 		} else if (isSolaris()) {
@@ -397,6 +397,7 @@ public class Provisioningclient {
 
 						for (int j = 0; j < serviceFeeModel
 								.getServicecommissions().size(); j++) {
+
 							setupservicecommissionrequest
 									.setServicefeepropertiesid(new Integer(
 											setupservicefeeresponse
@@ -413,10 +414,12 @@ public class Provisioningclient {
 											.getTransactiontypeid());
 							setupservicecommissionrequest
 									.setServicecommissioncondition(serviceCommission
-											.getServicecommissioncondition());
+											.getServicecommissioncondition()
+											.toString());
 							setupservicecommissionrequest
 									.setServicecommissionmodeltype(serviceCommission
-											.getServicecommissionmodeltype());
+											.getServicecommissionmodeltype()
+											.toString());
 							setupservicecommissionrequest
 									.setMinimumamount(serviceCommission
 											.getMinimumamount().doubleValue());

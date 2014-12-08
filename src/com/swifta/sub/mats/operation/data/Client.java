@@ -27,14 +27,16 @@ import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setparentrequest;
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setparentresponse;
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.Setparentresponses;
 import com.swifta.sub.mats.operation.data.MatsdataserviceStub.SetparentresponsesE;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceCommission;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceCommissionConditionTypes;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceCommissionModelTypes;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceFeeModel;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceFeematrix;
+import com.swifta.sub.mats.operation.provisioning.v1.ServiceFees;
 import com.swifta.sub.mats.serviceinterface.ActivationdataModel;
 import com.swifta.sub.mats.serviceinterface.DataResponse;
 import com.swifta.sub.mats.serviceinterface.IdentificationType;
 import com.swifta.sub.mats.serviceinterface.LinkaccountModel;
-import com.swifta.sub.mats.serviceinterface.ServiceCommission;
-import com.swifta.sub.mats.serviceinterface.ServiceFeeModel;
-import com.swifta.sub.mats.serviceinterface.ServiceFeematrix;
-import com.swifta.sub.mats.serviceinterface.ServiceFees;
 import com.swifta.sub.mats.serviceinterface.SetparentModel;
 
 public class Client {
@@ -97,23 +99,27 @@ public class Client {
 
 		serviceFeeModel.setServicefees(servicefees);
 
-		ServiceCommission serviceCommission1 = new ServiceCommission("FEE",
-				"NOTAPPLICABLE", 5, new BigDecimal("0.00"),
-				new BigDecimal("0.00"), new BigDecimal("25.00"), "PERCENT");
+		ServiceCommission serviceCommission1 = new ServiceCommission(
+				ServiceCommissionConditionTypes.FEE,
+				ServiceCommissionModelTypes.NOTAPPLICABLE, 5, new BigDecimal(
+						"0.00"), new BigDecimal("0.00"),
+				new BigDecimal("25.00"), "PERCENT");
 
 		serviceCommissions.add(serviceCommission1);
 
-//		ServiceCommission serviceCommission2 = new ServiceCommission("AMOUNT",
-//				"NOTAPPLICABLE", 5, new BigDecimal("501.00"), new BigDecimal(
-//						"1000.00"), new BigDecimal("20.00"), "PERCENT");
-//
-//		serviceCommissions.add(serviceCommission2);
-//
-//		ServiceCommission serviceCommission3 = new ServiceCommission("AMOUNT",
-//				"NOTAPPLICABLE", 5, new BigDecimal("1001.00"), new BigDecimal(
-//						"3000.00"), new BigDecimal("30.00"), "PERCENT");
-//
-//		serviceCommissions.add(serviceCommission3);
+		// ServiceCommission serviceCommission2 = new
+		// ServiceCommission("AMOUNT",
+		// "NOTAPPLICABLE", 5, new BigDecimal("501.00"), new BigDecimal(
+		// "1000.00"), new BigDecimal("20.00"), "PERCENT");
+		//
+		// serviceCommissions.add(serviceCommission2);
+		//
+		// ServiceCommission serviceCommission3 = new
+		// ServiceCommission("AMOUNT",
+		// "NOTAPPLICABLE", 5, new BigDecimal("1001.00"), new BigDecimal(
+		// "3000.00"), new BigDecimal("30.00"), "PERCENT");
+		//
+		// serviceCommissions.add(serviceCommission3);
 
 		serviceFeeModel.setServicecommissions(serviceCommissions);
 
